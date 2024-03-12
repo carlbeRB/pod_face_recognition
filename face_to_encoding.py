@@ -53,11 +53,12 @@ def checkFace(imgpath):
         print(imgpath + "does not contain one face")
         return False
 
-def checkValidRegistration(imgpath):
+def checkValidCamInput(imgpath, acceptableNum):
     valid_counter = 0
     pix = os.listdir(imgpath)
     for img in pix:
         if checkFace(imgpath + '/' + img):
             valid_counter += 1
-    return valid_counter >= 30
+    return valid_counter >= acceptableNum
+
 

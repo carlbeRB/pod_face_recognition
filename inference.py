@@ -1,4 +1,5 @@
 import pickle
+import os
 import numpy as np
 import face_recognition
 import face_to_encoding
@@ -18,4 +19,12 @@ def infer(imgpath):
                 return clf.predict(face_enc.reshape(1, -1))
             else:
                 return "No Match"
+
+def loginInfer(imgdir, label):
+    matching_count = 0
+    pix = os.listdir(imgdir)
+    for img in pix:
+        if infer(imgdir + '/' + img) == label:
+            matching_count += 1
+    return matching_count >= 9
 
